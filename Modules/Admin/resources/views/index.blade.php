@@ -1,7 +1,5 @@
-@extends('admin::layouts.master')
-
-@section('content')
+<x-admin::layouts.master>
     <h1>Hello World</h1>
 
     <p>Module: {!! config('admin.name') !!}</p>
-@endsection
+</x-admin::layouts.master>

@@ -3,30 +3,54 @@
 namespace Modules\Admin\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\View\View;
-use Modules\Admin\Models\ProductCategory;
-use Modules\Admin\Models\Product;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function dashboard(): View
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
     {
-        $productCategory = ProductCategory::all();
-
-        // Prepare chart data
-        $chartData = $productCategory->map(function ($category) {
-            return [
-                'y' => Product::where('category', $category->slug)->count(),
-                'label' => $category->name,
-            ];
-        });
-
-        $data = [
-            'productCategory' => $productCategory,
-            'productCount' => Product::count(),
-            'chartData' => $chartData,
-        ];
-
-        return view('admin::dashboard', $data);
+        return view('admin::index');
     }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('admin::create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request) {}
+
+    /**
+     * Show the specified resource.
+     */
+    public function show($id)
+    {
+        return view('admin::show');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit($id)
+    {
+        return view('admin::edit');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, $id) {}
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy($id) {}
 }
