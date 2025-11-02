@@ -4,8 +4,6 @@
     "scripts": {
         "build": "vite build",
         "dev": "vite"
-        "format": "prettier --write .",
-  "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
     },
     "dependencies": {
         "@tailwindcss/vite": "^4.1.11",
