@@ -13,7 +13,7 @@ class Faq extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'content'];
+    protected $fillable = ['content'];
     protected $casts = [
         'content' => 'array',
     ];

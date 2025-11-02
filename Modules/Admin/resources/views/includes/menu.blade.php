@@ -72,27 +72,7 @@
                 <p>{{ __('Services') }}</p>
             </a></li>
 
-        <li class="nav-item @if (Request::path() == 'admin/projects' || Request::path() == 'admin/project_categories') menu-open @endif @stack('Pro') @stack('projectCategories')">
-            <a href="#"
-                class="nav-link @if (Request::path() == 'admin/projects' || Request::path() == 'admin/project_categories') active @endif @stack('Pro') @stack('projectCategories')"><i
-                    class="nav-icon fa fa-project-diagram"></i>
-                <p>{{ __('Projects') }}</p><i class="right fas fa-angle-left"></i>
-            </a>
-            <ul class="nav nav-treeview">
 
-                <li class="nav-item has-treeview"><a href="{{ url('/admin/projects') }}"
-                        class="nav-link {{ Request::path() == 'admin/projects' ? 'active' : '' }} @stack('Pro')"><i
-                            class="nav-icon fa fa-project-diagram"></i>
-                        <p>{{ __('Projects') }}</p>
-                    </a></li>
-
-                <li class="nav-item has-treeview"><a href="{{ url('/admin/project_categories') }}"
-                        class="nav-link {{ Request::path() == 'admin/project_categories' ? 'active' : '' }} @stack('projectCategories')"><i
-                            class="nav-icon fas fa-tag"></i>
-                        <p>{{ __('Project Categories') }}</p>
-                    </a></li>
-            </ul>
-        </li>
 
         <li class="nav-item"><a href="{{ url('/admin/downloads') }}"
                 class="nav-link   @if (Request::path() == 'admin/downloads' || Request::path() == 'admin/downloads/create') active @endif"><i
