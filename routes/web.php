@@ -14,7 +14,7 @@ Route::get('/', function () {
     return view('livewire.auth.login');
 })->name('home');
 
-Route::get('dashboard', function () {
+Route::get('admin/dashboard', function () {
     $productCategory = ProductCategory::all();
 
     // Prepare chart data
@@ -31,10 +31,10 @@ Route::get('dashboard', function () {
         'chartData' => $chartData,
     ];
 
-    return view('dashboard', $data);
+    return view('admin.dashboard', $data);
 })
-->middleware(['auth', 'verified'])
-->name('dashboard');
+    ->middleware(['auth', 'verified'])
+    ->name('admin.dashboard');
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
