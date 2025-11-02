@@ -23,21 +23,34 @@ return new class extends Migration
         });
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->longText('content');
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->string('category');
+            $table->string('tag');
+            $table->string('image');
+            $table->string('video');
+            $table->longText('description');
             $table->timestamps();
         });
-        Schema::create('downloads', function (Blueprint $table) {
+        Schema::create('product_categories', function (Blueprint $table) {
             $table->id();
-            $table->longText('content');
+            $table->string('name');
+            $table->string('parentId');
+            $table->string('slug')->unique();
+            $table->string('image');
             $table->timestamps();
         });
-        Schema::create('downloads', function (Blueprint $table) {
+        Schema::create('product_tags', function (Blueprint $table) {
             $table->id();
-            $table->longText('content');
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->string('image');
             $table->timestamps();
         });
         Schema::create('services', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('slug')->unique();
             $table->longText('content');
             $table->timestamps();
         });
@@ -73,8 +86,8 @@ return new class extends Migration
         Schema::dropIfExists('downloads');
         Schema::dropIfExists('faqs');
         Schema::dropIfExists('products');
-        Schema::dropIfExists('downloads');
-        Schema::dropIfExists('downloads');
+        Schema::dropIfExists('product_categories');
+        Schema::dropIfExists('product_tags');
         Schema::dropIfExists('services');
         Schema::dropIfExists('settings');
         Schema::dropIfExists('teams');
