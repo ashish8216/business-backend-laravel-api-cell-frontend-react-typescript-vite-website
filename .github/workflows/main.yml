@@ -1,0 +1,57 @@
+name: main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sendEmail:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Capture form data
+        id: capture-form-data
+        run: |
+          echo "name=${{ env.INPUT_NAME }}" >> $GITHUB_ENV
+          echo "email=${{ env.INPUT_EMAIL }}" >> $GITHUB_ENV
+          echo "message=${{ env.INPUT_MESSAGE }}" >> $GITHUB_ENV
+
+      - name: Send email
+        env:
+          TO_EMAIL: ${{ secrets.TO_EMAIL }}
+          FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+        run: |
+          npm install --save @sendgrid/mail
+
+          const sgMail = require('@sendgrid/mail');
+          sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+          const formData = JSON.parse(process.env.CAPTURE_FORM_DATA);
+
+          const message = {
+            to: 'spyfilip@gmail.com',  // Replace with your email address
+            from: 'argentinos1050@gmail.com',   // Replace with the sender email address
+            subject: 'Form Submission',
+            text: `A form submission was received:\n\nName: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}`
+          };
+
+          try {
+            sgMail.send(message);
+            console.log('Email sent successfully');
+          } catch (error) {
+            console.error('Error sending email:', error);
+            process.exit(1);  // Exit with a non-zero code to indicate failure
+          }
