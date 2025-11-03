@@ -25,7 +25,7 @@ use Modules\Admin\Models\Service;
 Route::middleware(['auth', 'verified'])->group(function () {
    
 
-    Route::get('/admin/Manger', function () {
+    Route::get('/Manger', function () {
         return view('admin::Manger');
     });
 
@@ -52,19 +52,19 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     Route::resources([
-        'admin/settings' => SettingController::class,
-        'admin/profiles' => UserController::class,
-        'admin/slideshows' => SlideshowController::class,
-        'admin/products' => ProductController::class,
-        'admin/product_categories' => ProductCategoryController::class,
-        'admin/product_tags' => ProductTagController::class,
-        'admin/downloads' => DownloadController::class,
-        'admin/faqs' => FaqController::class,
-        'admin/teams' => TeamController::class,
-        'admin/testimonials' => TestimonialController::class,
-        'admin/videos' => VideoController::class,
-        'admin/services' => ServiceController::class,
+        'settings' => SettingController::class,
+        'profiles' => UserController::class,
+        'slideshows' => SlideshowController::class,
+        'products' => ProductController::class,
+        'product_categories' => ProductCategoryController::class,
+        'product_tags' => ProductTagController::class,
+        'downloads' => DownloadController::class,
+        'faqs' => FaqController::class,
+        'teams' => TeamController::class,
+        'testimonials' => TestimonialController::class,
+        'videos' => VideoController::class,
+        'services' => ServiceController::class,
     ]);
 
-    Route::post('admin/downloads/{id}/restore', [DownloadController::class, 'restore'])->name('downloads.restore');
+    Route::post('/downloads/{id}/restore', [DownloadController::class, 'restore'])->name('downloads.restore');
 });

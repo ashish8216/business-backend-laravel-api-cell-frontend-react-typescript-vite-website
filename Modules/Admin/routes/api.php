@@ -8,11 +8,9 @@ use Modules\Admin\Http\Controllers\ProductTagController;
 use Modules\Admin\Http\Controllers\SettingController;
 use Modules\Admin\Http\Controllers\SlideshowController;
 use Modules\Admin\Http\Controllers\DownloadController;
-use Modules\Admin\Http\Controllers\ProjectController;
 use Modules\Admin\Http\Controllers\FaqController;
 use Modules\Admin\Http\Controllers\TeamController;
 use Modules\Admin\Http\Controllers\VideoController;
-use Modules\Admin\Http\Controllers\ProjectCategoryController;
 use Modules\Admin\Http\Controllers\TestimonialController;
 use Modules\Admin\Http\Controllers\ServiceController;
 
@@ -27,17 +25,13 @@ Route::get('product/{slug}', [ProductController::class, 'product'])->name('produ
 Route::get('productCategories/{slug}', [ProductController::class, 'productCategories'])->name('productCategories');
 Route::get('productTags/{slug}', [ProductController::class, 'productTags'])->name('productTags');
 Route::get('search', [ProductController::class, 'search'])->name('search.q');
-Route::get('projects', [ProjectController::class, 'projects'])->name('projects');
-Route::get('project/{slug}', [ProjectController::class, 'project'])->name('project');
 Route::get('faq', [FaqController::class, 'faq'])->name('faq');
 Route::get('team', [TeamController::class, 'team'])->name('team');
 Route::get('video', [VideoController::class, 'video'])->name('video');
-Route::get('projectCategories/{slug}', [ProjectCategoryController::class, 'projectCategories'])->name('projectCategories');
 Route::get('testimonial', [TestimonialController::class, 'testimonial'])->name('testimonial');
 Route::get('services', [ServiceController::class, 'services'])->name('services');
 Route::get('servicesHome', [ServiceController::class, 'servicesHome'])->name('servicesHome');
 Route::get('service/{slug}', [ServiceController::class, 'service'])->name('service');
-
 Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
     Route::apiResource('admins', AdminController::class)->names('admin');
 });

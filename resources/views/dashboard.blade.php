@@ -18,7 +18,7 @@
                         <div class="icon">
                             <i class="fa fa-shopping-cart"></i>
                         </div>
-                        <a href=" {{ url('admin/blogs') }} " class="small-box-footer">{{ __('More info') }} <i
+                        <a href=" {{ url('products') }} " class="small-box-footer">{{ __('More info') }} <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
