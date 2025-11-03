@@ -9,7 +9,9 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
-
+Route::get('/', function () {
+    return redirect()->route('login');
+});
 
 
 
