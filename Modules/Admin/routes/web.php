@@ -14,6 +14,7 @@ use Modules\Admin\Http\Controllers\TeamController;
 use Modules\Admin\Http\Controllers\VideoController;
 use Modules\Admin\Http\Controllers\TestimonialController;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use Modules\Admin\Http\Controllers\AdminController;
 use Modules\Admin\Models\Product;
 use Modules\Admin\Models\ProductCategory;
 use Modules\Admin\Models\ProductTag;
@@ -23,6 +24,8 @@ use Modules\Admin\Models\Service;
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
+
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
    
 
     Route::get('/Manger', function () {
