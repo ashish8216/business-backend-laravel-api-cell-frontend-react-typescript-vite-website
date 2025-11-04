@@ -28,14 +28,14 @@ return new class extends Migration
             $table->string('category');
             $table->string('tag');
             $table->string('image');
-            $table->string('video');
+            $table->string('video')->nullable();
             $table->longText('description');
             $table->timestamps();
         });
         Schema::create('product_categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('parentId');
+            $table->string('parentId')->nullable();
             $table->string('slug')->unique();
             $table->string('image');
             $table->timestamps();

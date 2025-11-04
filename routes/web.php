@@ -10,8 +10,8 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 });
 
 Route::get('/', function () {
-    return redirect()->route('login');
-});
+    return view('livewire.auth.login');
+})->name('login');
 
 
 
