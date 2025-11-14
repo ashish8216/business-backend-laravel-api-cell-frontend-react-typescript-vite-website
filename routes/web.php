@@ -11,7 +11,7 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 
 Route::get('/', function () {
     return view('livewire.auth.login');
-})->name('login');
+})->name('login')->middleware('guest');
 
 
 
